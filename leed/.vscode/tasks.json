@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "C/C++: gcc.exe build active file",
+      "command": "D:\\software\\x86_64-15.1.0-release-win32-seh-msvcrt-rt_v12-rev0\\mingw64\\bin\\gcc.exe", // 确保这是你 gcc.exe 的路径
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g", // -g 参数是为了生成调试信息，必须有！
+        "${file}",
+        "-o", // -o 参数是指定输出文件名
+        // 下面的输出路径要和 launch.json 中的 "program" 对应
+        "${fileDirname}/${fileBasenameNoExtension}.exe" 
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "编译器: D:\\mingw64\\bin\\gcc.exe"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(gdb) 启动", // 你可以改成自己喜欢的名字
+      "type": "cppdbg",
+      "request": "launch",
+      // --- 这是修改后的核心部分 ---
+      "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+      "args": [],
+      "stopAtEntry": false,
+      // 将工作目录也设置为文件所在目录，避免找不到输入文件等问题
+      "cwd": "${fileDirname}", 
+      "environment": [],
+      // 建议设为 true，这样会弹出一个独立的黑窗口运行程序，体验更好
+      "externalConsole": true, 
+      "MIMode": "gdb",
+      // !! 确保这个路径是你自己电脑上 gdb.exe 的实际路径 !!
+      "miDebuggerPath": "D:\\software\\x86_64-15.1.0-release-win32-seh-msvcrt-rt_v12-rev0\\mingw64\\bin\\gdb.exe", 
+      "setupCommands": [
+        {
+          "description": "为 gdb 启用整齐打印",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      // --- 重要补充：关联编译任务 ---
+      // 这会告诉 VS Code 在启动调试(launch)之前，先执行名为 "C/C++: gcc.exe build active file" 的编译任务
+      "preLaunchTask": "C/C++: gcc.exe build active file" 
+    }
+  ]
+}
